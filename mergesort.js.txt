@@ -1,0 +1,18 @@
+function mergeSort (a) {
+	if (a.length < 2) return a;
+
+	var mid = Math.floor(a.length /2);
+	var subLeft = mergeSort(a.slice(0,mid));
+	var subRight = mergeSort(a.slice(mid));
+
+	return merge(subLeft, subRight);
+}
+
+function merge (s, d) {
+	var result = [];
+	while (s.length > 0 && d.length > 0)
+		result.push(s[0] < d[0]? s.shift() : d.shift());
+	return result.concats(s.length? s:d)
+}
+var test = [1,2,9,3,2,5,14,0];
+console.log(mergeSort(test)); // -> [0,1,2,2,3,5,9,14]
